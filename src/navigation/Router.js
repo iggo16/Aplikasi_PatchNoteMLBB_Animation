@@ -1,8 +1,8 @@
 import React from 'react';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home, Patch, Tier, Profile, BlogDetail } from '../screens';
-import { Home2, LocationDiscover, Receipt21, ProfileCircle } from 'iconsax-react-native';
+import { Home, Patch, Tier, Profile, BlogDetail, Search, AddBlogForm } from '../screens';
+import { Home2, LocationDiscover, Receipt21, ProfileCircle, AddSquare, SearchNormal } from 'iconsax-react-native';
 import { fontType, colors } from '../theme';
 
 const Tab = createBottomTabNavigator();
@@ -71,6 +71,19 @@ function MainApp() {
                     headerShown: false,
                 }}
             />
+            <Tab.Screen
+                name="SearchPage"
+                component={Search}
+                options={{
+                    tabBarLabel: 'Cari',
+                    tabBarIcon: ({ focused, color }) => (
+                        <SearchNormal color={color}
+                            variant={focused ? 'Bold' : 'Linear'}
+                            size={24} />
+                    ),
+                    headerShown: false,
+                }}
+            />
         </Tab.Navigator>
     );
 }
@@ -85,6 +98,18 @@ const Router = () => {
             <Stack.Screen
                 name="BlogDetail"
                 component={BlogDetail}
+                options={{
+                    headerShown: false,
+                    animationEnabled: true,
+                    animationTypeForReplace: 'pop',
+                    gestureEnabled: true,
+                    gestureDirection: 'horizontal',
+                    ...TransitionPresets.SlideFromRightIOS,
+                }}
+            />
+            <Stack.Screen
+                name="AddBlog"
+                component={AddBlogForm}
                 options={{
                     headerShown: false,
                     animationEnabled: true,

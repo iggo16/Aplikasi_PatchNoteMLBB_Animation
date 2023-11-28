@@ -4,4 +4,6 @@ import Tier from "./Tier";
 import Patch from "./Patch";
 import Profile from "./Profile";
 import BlogDetail from "./BlogDetail";
-export { Home, Tier, Patch, Profile, BlogDetail }
+import Search from "./Search";
+import AddBlogForm from "./AddBlogForm";
+export { Home, Tier, Patch, Profile, BlogDetail, Search, AddBlogForm }

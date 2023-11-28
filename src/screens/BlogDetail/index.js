@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { BlogList } from '../../../data';
 import FastImage from 'react-native-fast-image';
 import { fontType, colors } from '../../theme';
+import { MessageText } from "iconsax-react-native";
 
 const BlogDetail = ({ route }) => {
     const scrollY = useRef(new Animated.Value(0)).current;
@@ -56,12 +57,35 @@ const BlogDetail = ({ route }) => {
                 </Animated.ScrollView>
                 <Animated.View style={[styles.bottomBar, { transform: [{ translateY: bottomBarY }] }]}>
                 </Animated.View>
+                <TouchableOpacity
+                    style={styles.floatingButton}
+                    onPress={() => navigation.navigate("AddBlog")}
+                >
+                    <MessageText color={colors.white()} variant="Linear" size={30} />
+                </TouchableOpacity>
             </View>
         </View>
     );
 };
 export default BlogDetail;
 const styles = StyleSheet.create({
+    floatingButton: {
+        backgroundColor: colors.grey(),
+        padding: 1,
+        position: 'absolute',
+        bottom: 30,
+        right: 30,
+        borderRadius: 10,
+        shadowColor: colors.blue(),
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.3,
+        shadowRadius: 4.65,
+
+        elevation: 8,
+    },
     Box: {
         borderWidth: 1,
         borderColor: colors.blue(0.5),
@@ -81,6 +105,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     container: {
+        backgroundColor: colors.blue(0.1),
         flex: 1,
         resizeMode: 'cover',
         justifyContent: 'center',
